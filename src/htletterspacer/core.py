@@ -44,7 +44,7 @@ def space_main(
     debug_draw: Callable[[list[Point], list[Point]], None] | None = None,
 ) -> None:
     if not layer.contours and not layer.components:
-        LOGGER.warning("No paths in glyph %s.", layer.name)
+        LOGGER.info("No paths in glyph %s.", layer.name)
         return
 
     if layer.components:
@@ -186,7 +186,7 @@ def calculate_spacing(
         new_right += width_diff
         new_width = tabular_width
 
-        LOGGER.warning(
+        LOGGER.info(
             "%s is tabular and adjusted at width = %s", layer.name, str(tabular_width)
         )
     # TODO: Decide earlier whether to compute lsb/rsb.

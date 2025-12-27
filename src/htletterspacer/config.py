@@ -58,7 +58,9 @@ def parse_config(config: str) -> ConfigList:
         line = line.strip()
         if line and not line.startswith("#"):
             line_split = line.rstrip(",").split(",")
-            script, category, subcategory, factor, reference_glyph, name_filter = line_split
+            script, category, subcategory, factor, reference_glyph, name_filter = (
+                line_split
+            )
             array.append(
                 (
                     script,

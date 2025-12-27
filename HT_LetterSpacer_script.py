@@ -26,6 +26,7 @@ import vanilla
 from vanilla import dialogs
 from defaultConfigFile import *
 
+
 #  Functions
 def setSidebearings(layer, newL, newR, width, color):
     layer.LSB = newL
@@ -454,7 +455,6 @@ class HTLetterspacerLib(object):
 
 class HTLetterspacerScript(object):
     def __init__(self, ui, drawAreas):
-
         self.engine = HTLetterspacerLib()
 
         self.font = GlyphsApp.Glyphs.font

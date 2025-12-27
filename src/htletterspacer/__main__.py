@@ -20,6 +20,7 @@ AREA_KEY = "com.ht.spacer.area"
 DEPTH_KEY = "com.ht.spacer.depth"
 OVERSHOOT_KEY = "com.ht.spacer.overshoot"
 
+
 # TODO: respect metrics keys by skipping that side or by interpreting them?
 # TODO: pull in glyphConstruction to rebuild components?
 def main(args: list[str] | None = None) -> None:
@@ -117,7 +118,7 @@ def space_ufo(
             continue
 
         if not glyph.contours and not glyph.components:
-            LOGGER.warning(
+            LOGGER.info(
                 "Skipping glyph %s because it has neither contours nor components.",
                 glyph.name,
             )
@@ -125,7 +126,7 @@ def space_ufo(
         if glyph.width == 0 and any(
             a.name.startswith("_") for a in glyph.anchors if a.name is not None
         ):
-            LOGGER.warning("Skipping glyph %s because it is a mark.", glyph.name)
+            LOGGER.info("Skipping glyph %s because it is a mark.", glyph.name)
             continue
 
         ref_name, factor = htletterspacer.config.reference_and_factor(config, glyph)
@@ -133,7 +134,7 @@ def space_ufo(
         try:
             glyph_ref = ufo[ref_name]
         except KeyError:
-            LOGGER.warning(
+            LOGGER.info(
                 "Reference glyph %s does not exist, spacing %s with own bounds.",
                 ref_name,
                 glyph.name,
